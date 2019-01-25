@@ -13,9 +13,9 @@ public class GameMapGenerator {
         this.randomFiller = randomFiller;
     }
 
-    public GameMap createMap(int width, int height, float fillPercentage) {
+    GameMap createMap(int width, int height, float fillPercentage, int smoothRounds) {
         GameMap map = new GameMap(width, height);
-        randomFiller.FillMap(map, fillPercentage);
+        randomFiller.FillMap(map, fillPercentage, smoothRounds);
         return map;
     }
 }

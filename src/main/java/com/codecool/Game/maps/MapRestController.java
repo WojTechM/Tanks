@@ -16,7 +16,7 @@ public class MapRestController {
 
     @GetMapping(path = "/map")
     private String getMap() {
-        GameMap map = mapGenerator.createMap(30, 16, 0.6f);
+        GameMap map = mapGenerator.createMap(80, 10, 0.35f, 2);
         System.out.println(map);
         return map.toJson();
     }

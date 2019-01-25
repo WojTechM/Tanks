@@ -8,13 +8,13 @@ public class GameMap {
     final int width;
     final int height;
 
-    public GameMap(int width, int height) {
+    GameMap(int width, int height) {
         map = new char[width][height];
         this.width = width;
         this.height = height;
     }
 
-    public void setField(int x, int y, char symbol) {
+    void setField(int x, int y, char symbol) {
         validateCoordinates(x, y);
         map[x][y] = symbol;
     }
@@ -42,8 +42,24 @@ public class GameMap {
         return builder.toString();
     }
 
-    public String toJson() {
+    String toJson() {
         Gson gson = new Gson();
         return gson.toJson(map);
+    }
+
+    int getSurroundingElementCount(int x, int y, char symbol) {
+        int result = 0;
+        for (int neighbourX = x - 1; neighbourX <= x + 1; neighbourX++) {
+            for (int neighbourY = y - 1; neighbourY <= y + 1; neighbourY++) {
+                if (neighbourX >= 0 && neighbourX < width && neighbourY >= 0 && neighbourY < height) {
+                    if ((neighbourX != x || neighbourY != y) && map[neighbourX][neighbourY] == symbol) {
+                        result++;
+                    }
+                } else {
+                    result++;
+                }
+            }
+        }
+        return result;
     }
 }
