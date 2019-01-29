@@ -10,7 +10,7 @@ public class GameMapRandomFiller {
     private final char EMPTY = '_';
     private final char WALL = 'w';
 
-    public void FillMap(GameMap map, float fillPercentage, int smoothMapRounds) {
+    void FillMap(GameMap map, float fillPercentage, int smoothMapRounds) {
         RandomFillMap(map, fillPercentage);
         for (int i = 0; i < smoothMapRounds; i++) {
             SmoothMap(map);
